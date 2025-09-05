@@ -1,7 +1,8 @@
 #!/usr/bin/zsh
 
 # Configuration
-n=${1:-10}  # Default to 10 iterations if no argument provided
+#n=${1:-5}  # Default to 5 iterations if no argument provided
+n=5
 
 counter=0
 total_iterations=0
@@ -12,8 +13,11 @@ while true; do
         counter=$((counter + 1))
         total_iterations=$((total_iterations + 1))
 
-        # Replace this with your actual work
-        aider --read $GIT_REPOSITORIES/AiderBuilder/BUILDER.md $@
+        echo "\n###################"
+        echo "# AiderBuilder iteration #$total_iterations ($(date))"
+        echo "###################"
+
+        aider --read "$GIT_REPOSITORIES/AiderBuilder/BUILDER.md" $@
     done
 
     # Ask user to continue
