@@ -107,7 +107,3 @@ The script validates:
 ## Version
 
 Current version: 3.0.0
-
-## License
-
-[Add your license here]
