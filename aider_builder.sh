@@ -98,12 +98,29 @@ if [[ ! -s "$rules_file" ]]; then
     exit 1
 fi
 
+# Check if FINISHED.md already exists before starting
+if [[ -f "FINISHED.md" ]]; then
+    echo "Error: FINISHED.md already exists in the current directory"
+    echo "This file indicates a previous build has finished."
+    echo "Please remove or rename FINISHED.md before starting a new build session."
+    exit 1
+fi
+
 counter=0
 total_iterations=0
 
 while true; do
     # Run loop n_iter times
     for ((i=1; i<=n_iter; i++)); do
+        # Check if build is finished
+        if [[ -f "FINISHED.md" ]]; then
+            echo "\n###################"
+            echo "# Build finished! FINISHED.md detected."
+            echo "###################"
+            echo "Completed $total_iterations total iterations."
+            exit 0
+        fi
+
         counter=$((counter + 1))
         total_iterations=$((total_iterations + 1))
 
