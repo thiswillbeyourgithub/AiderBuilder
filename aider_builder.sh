@@ -11,8 +11,6 @@ Run aider in a loop with builder rules.
 
 Required arguments:
   -n_iter N              Number of iterations per batch (must be > 1)
-
-Optional arguments:
   --rules RULES_FILE     Path to builder rules file
   -h, --help            Show this help message and exit
   -v, --version         Show version and exit
@@ -74,6 +72,29 @@ fi
 
 if [[ $n_iter -le 1 ]]; then
     echo "Error: -n_iter must be greater than 1"
+    exit 1
+fi
+
+# Validate rules_file is provided
+if [[ -z "$rules_file" ]]; then
+    echo "Error: --rules argument is required"
+    echo "Use -h or --help for usage information"
+    exit 1
+fi
+
+# Validate rules_file exists and is a regular file
+if [[ ! -f "$rules_file" ]]; then
+    if [[ -e "$rules_file" ]]; then
+        echo "Error: '$rules_file' exists but is not a regular file"
+    else
+        echo "Error: Rules file '$rules_file' does not exist"
+    fi
+    exit 1
+fi
+
+# Validate rules_file is not empty
+if [[ ! -s "$rules_file" ]]; then
+    echo "Error: Rules file '$rules_file' is empty"
     exit 1
 fi
 
