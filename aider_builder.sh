@@ -60,6 +60,11 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Show help if no arguments provided
+if [[ -z "$n_iter" ]] && [[ ${#aider_args[@]} -eq 0 ]]; then
+    show_help
+fi
+
 # Validate n_iter is provided and > 1
 if [[ -z "$n_iter" ]]; then
     echo "Error: -n_iter argument is required"
