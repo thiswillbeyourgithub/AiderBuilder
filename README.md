@@ -26,7 +26,7 @@ AiderBuilder automates the process of running aider in a loop with special build
 1. Clone or download this repository
 2. Make the script executable:
    ```bash
-   chmod +x aider_builder.sh
+   chmod +x aider_builder
    ```
 
 ## Usage
@@ -34,7 +34,7 @@ AiderBuilder automates the process of running aider in a loop with special build
 ### Basic Command Structure
 
 ```bash
-./aider_builder.sh -n_iter N [--extra_rules RULES_STRING] [AIDER_ARGS...]
+./aider_builder -n_iter N [--extra_rules RULES_STRING] [AIDER_ARGS...]
 ```
 
 ### Required Arguments
@@ -52,16 +52,16 @@ AiderBuilder automates the process of running aider in a loop with special build
 
 ```bash
 # Run 5 iterations per batch with default builder rules
-./aider_builder.sh -n_iter 5
+./aider_builder -n_iter 5
 
 # Run with specific aider model and additional files
-./aider_builder.sh -n_iter 3 --model gpt-4 --read docs/
+./aider_builder -n_iter 3 --model gpt-4 --read docs/
 
 # Run with architect mode enabled
-./aider_builder.sh -n_iter 10 --architect
+./aider_builder -n_iter 10 --architect
 
 # Run with additional custom rules
-./aider_builder.sh -n_iter 5 --extra_rules "Focus on performance optimization in each step."
+./aider_builder -n_iter 5 --extra_rules "Focus on performance optimization in each step."
 ```
 
 ## How Builder Mode Works
@@ -93,7 +93,7 @@ This approach enables complex, multi-step development tasks to be handled system
 
 ## Files
 
-- `aider_builder.sh`: Main shell script (version 3.0.0)
+- `aider_builder`: Main shell script (version 3.0.0)
 - `ROADMAP.md`: Created and maintained by aider during builds (tracks progress and coordination)
 - `FINISHED.md`: Created by aider when the build is complete (signals completion)
 
