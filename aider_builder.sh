@@ -13,7 +13,7 @@ Required arguments:
   -n_iter N              Number of iterations per batch (must be > 1)
 
 Optional arguments:
-  --rules RULES_FILE     Path to builder rules file (default: \$GIT_REPOSITORIES/AiderBuilder/BUILDER.md)
+  --rules RULES_FILE     Path to builder rules file
   -h, --help            Show this help message and exit
   -v, --version         Show version and exit
   
@@ -25,7 +25,7 @@ EOF
 
 # Parse arguments
 n_iter=""
-rules_file="$GIT_REPOSITORIES/AiderBuilder/BUILDER.md"
+rules_file=""
 aider_args=()
 
 while [[ $# -gt 0 ]]; do
