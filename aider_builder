@@ -19,12 +19,13 @@ BUILDER_RULES='If you see this text, you are expected to work in builder mode. I
 # Function to show usage
 show_help() {
     cat << EOF
-Usage: aider_builder.sh -n_iter N [--extra_rules RULES_STRING] [AIDER_ARGS...]
+Usage: aider_builder.sh -n_iter N -i INSTRUCTIONS [--extra_rules RULES_STRING] [AIDER_ARGS...]
 
 Run aider in a loop with builder rules.
 
 Required arguments:
   -n_iter N                Number of iterations per batch (must be > 1)
+  -i, --instructions INST  Instructions for what to build (passed as --message to aider)
 
 Optional arguments:
   --extra_rules RULES      Additional rules to append to built-in builder rules
@@ -32,6 +33,8 @@ Optional arguments:
   -v, --version           Show version and exit
   
   AIDER_ARGS...           Additional arguments to pass to aider
+                          Note: Do not use --message in AIDER_ARGS as it will be
+                          automatically set from the --instructions argument
 
 EOF
     exit 0
@@ -39,6 +42,7 @@ EOF
 
 # Parse arguments
 n_iter=""
+instructions=""
 extra_rules=""
 aider_args=()
 
@@ -59,6 +63,14 @@ while [[ $# -gt 0 ]]; do
             n_iter=$2
             shift 2
             ;;
+        -i|--instructions)
+            if [[ -z "$2" ]]; then
+                echo "Error: -i/--instructions requires a string as argument"
+                exit 1
+            fi
+            instructions=$2
+            shift 2
+            ;;
         --extra_rules)
             if [[ -z "$2" ]]; then
                 echo "Error: --extra_rules requires a string as argument"
@@ -75,16 +87,31 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Show help if no arguments provided
-if [[ -z "$n_iter" ]] && [[ ${#aider_args[@]} -eq 0 ]]; then
+if [[ -z "$n_iter" ]] && [[ -z "$instructions" ]] && [[ ${#aider_args[@]} -eq 0 ]]; then
     show_help
 fi
 
-# Validate n_iter is provided and > 1
+# Validate required arguments
 if [[ -z "$n_iter" ]]; then
     echo "Error: -n_iter argument is required"
     echo "Use -h or --help for usage information"
     exit 1
 fi
+
+if [[ -z "$instructions" ]]; then
+    echo "Error: -i/--instructions argument is required"
+    echo "Use -h or --help for usage information"
+    exit 1
+fi
+
+# Check that --message is not in aider_args
+for arg in "${aider_args[@]}"; do
+    if [[ "$arg" == "--message" || "$arg" == "-m" ]]; then
+        echo "Error: --message/-m should not be provided in AIDER_ARGS"
+        echo "Use -i/--instructions instead, which will be passed as --message to aider"
+        exit 1
+    fi
+done
 
 if [[ $n_iter -le 1 ]]; then
     echo "Error: -n_iter must be greater than 1"
@@ -137,7 +164,7 @@ while true; do
         echo "# AiderBuilder iteration #$total_iterations ($(date))"
         echo "###################"
 
-        aider --read "$rules_tmp_file" "${aider_args[@]}"
+        aider --read "$rules_tmp_file" --message "Remember that you are in builder mode: $instructions" "${aider_args[@]}"
     done
 
     # Ask user to continue
