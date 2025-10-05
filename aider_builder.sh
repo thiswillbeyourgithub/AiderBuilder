@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-VERSION="2.0.0"
+VERSION="3.0.0"
 
 # Built-in builder rules
 BUILDER_RULES='If you see this text, you are expected to work in builder mode. In builder mode, you will be asked the same prompt in a loop for several iterations so some new rules apply:
