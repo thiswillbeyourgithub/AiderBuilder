@@ -2,20 +2,33 @@
 
 VERSION="2.0.0"
 
+# Built-in builder rules
+BUILDER_RULES='If you see this text, you are expected to work in builder mode. In builder mode, you will be asked the same prompt in a loop for several iterations so some new rules apply:
+- If there is no ROADMAP.md file at the root of the repo, you must create it.
+- ROADMAP.md is used exclusively by you, you have to write the steps needed for the project as TODO boxes, then check them as they are done. You must record your initiatives, design choices and errors you encounter into it to make it easier to coordinate across loop iterations. Military style communication is effective for this.
+- ROADMAP.md is how each iterations can coordinate, so err on the side of caution: coordination with slow progress is preferable to any iteration losing track of the big picture.
+- Do not start the actual building until you are certain ROADMAP.md is ready.
+- Don'\''t lose track of the user'\''s request.
+- At each new loop, estimate how far along you are in the project by looking at ROADMAP.md
+- When building, never do more than one step at a time. Instead, either do one step while carefully editing ROADMAP.md, or split the next ROADMAP.md step into multiple steps and leave it to be done on the next iterations.
+- If the project and ROADMAP.md are finished, create a file "FINISHED.md" then ask the user what to do.'
+
 # Function to show usage
 show_help() {
     cat << EOF
-Usage: aider_builder.sh -n_iter N [--rules RULES_FILE] [AIDER_ARGS...]
+Usage: aider_builder.sh -n_iter N [--extra_rules RULES_STRING] [AIDER_ARGS...]
 
 Run aider in a loop with builder rules.
 
 Required arguments:
-  -n_iter N              Number of iterations per batch (must be > 1)
-  --rules RULES_FILE     Path to builder rules file
-  -h, --help            Show this help message and exit
-  -v, --version         Show version and exit
+  -n_iter N                Number of iterations per batch (must be > 1)
+
+Optional arguments:
+  --extra_rules RULES      Additional rules to append to built-in builder rules
+  -h, --help              Show this help message and exit
+  -v, --version           Show version and exit
   
-  AIDER_ARGS...         Additional arguments to pass to aider
+  AIDER_ARGS...           Additional arguments to pass to aider
 
 EOF
     exit 0
@@ -23,7 +36,7 @@ EOF
 
 # Parse arguments
 n_iter=""
-rules_file=""
+extra_rules=""
 aider_args=()
 
 while [[ $# -gt 0 ]]; do
@@ -43,12 +56,12 @@ while [[ $# -gt 0 ]]; do
             n_iter=$2
             shift 2
             ;;
-        --rules)
+        --extra_rules)
             if [[ -z "$2" ]]; then
-                echo "Error: --rules requires a file path as argument"
+                echo "Error: --extra_rules requires a string as argument"
                 exit 1
             fi
-            rules_file=$2
+            extra_rules=$2
             shift 2
             ;;
         *)
@@ -75,28 +88,18 @@ if [[ $n_iter -le 1 ]]; then
     exit 1
 fi
 
-# Validate rules_file is provided
-if [[ -z "$rules_file" ]]; then
-    echo "Error: --rules argument is required"
-    echo "Use -h or --help for usage information"
-    exit 1
+# Combine builder rules with extra rules if provided
+combined_rules="$BUILDER_RULES"
+if [[ -n "$extra_rules" ]]; then
+    combined_rules="$combined_rules
+
+$extra_rules"
 fi
 
-# Validate rules_file exists and is a regular file
-if [[ ! -f "$rules_file" ]]; then
-    if [[ -e "$rules_file" ]]; then
-        echo "Error: '$rules_file' exists but is not a regular file"
-    else
-        echo "Error: Rules file '$rules_file' does not exist"
-    fi
-    exit 1
-fi
-
-# Validate rules_file is not empty
-if [[ ! -s "$rules_file" ]]; then
-    echo "Error: Rules file '$rules_file' is empty"
-    exit 1
-fi
+# Create temporary file for rules
+rules_tmp_file=$(mktemp)
+trap "rm -f $rules_tmp_file" EXIT
+echo "$combined_rules" > "$rules_tmp_file"
 
 # Check if FINISHED.md already exists before starting
 if [[ -f "FINISHED.md" ]]; then
@@ -128,7 +131,7 @@ while true; do
         echo "# AiderBuilder iteration #$total_iterations ($(date))"
         echo "###################"
 
-        aider --read "$rules_file" "${aider_args[@]}"
+        aider --read "$rules_tmp_file" "${aider_args[@]}"
     done
 
     # Ask user to continue
