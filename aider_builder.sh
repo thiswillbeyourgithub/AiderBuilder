@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-VERSION="1.0.0"
+VERSION="2.0.0"
 
 # Function to show usage
 show_help() {
