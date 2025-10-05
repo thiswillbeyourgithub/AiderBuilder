@@ -103,7 +103,3 @@ The script validates:
 - Required `-n_iter` argument is provided
 - `n_iter` is greater than 1
 - No `FINISHED.md` exists before starting (prevents conflicts with previous builds)
-
-## Version
-
-Current version: 3.0.0
