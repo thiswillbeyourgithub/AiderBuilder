@@ -34,16 +34,16 @@ AiderBuilder automates the process of running aider in a loop with special build
 ### Basic Command Structure
 
 ```bash
-./aider_builder.sh -n_iter N --rules RULES_FILE [AIDER_ARGS...]
+./aider_builder.sh -n_iter N [--extra_rules RULES_STRING] [AIDER_ARGS...]
 ```
 
 ### Required Arguments
 
 - `-n_iter N`: Number of iterations to run per batch (must be > 1)
-- `--rules RULES_FILE`: Path to the builder rules file (typically `BUILDER_RULES.md`)
 
 ### Optional Arguments
 
+- `--extra_rules RULES`: Additional rules to append to the built-in builder rules
 - `-h, --help`: Show help message and exit
 - `-v, --version`: Show version and exit
 - `AIDER_ARGS...`: Any additional arguments to pass through to aider
@@ -51,21 +51,25 @@ AiderBuilder automates the process of running aider in a loop with special build
 ### Example Usage
 
 ```bash
-# Run 5 iterations per batch with the builder rules
-./aider_builder.sh -n_iter 5 --rules BUILDER_RULES.md
+# Run 5 iterations per batch with default builder rules
+./aider_builder.sh -n_iter 5
 
 # Run with specific aider model and additional files
-./aider_builder.sh -n_iter 3 --rules BUILDER_RULES.md --model gpt-4 --read docs/
+./aider_builder.sh -n_iter 3 --model gpt-4 --read docs/
 
 # Run with architect mode enabled
-./aider_builder.sh -n_iter 10 --rules BUILDER_RULES.md --architect
+./aider_builder.sh -n_iter 10 --architect
+
+# Run with additional custom rules
+./aider_builder.sh -n_iter 5 --extra_rules "Focus on performance optimization in each step."
 ```
 
 ## How Builder Mode Works
 
 1. **Initialization**: The script checks that no `FINISHED.md` exists from a previous build
-2. **Rule Loading**: Builder rules from `BUILDER_RULES.md` are loaded into aider via `--read`
+2. **Rule Loading**: Built-in builder rules are automatically loaded into aider (with optional `--extra_rules` if provided)
 3. **Iteration Loop**: Aider runs `n_iter` times, with each iteration:
+   - Creating `ROADMAP.md` if it doesn't exist
    - Reading and updating `ROADMAP.md` to coordinate work
    - Performing one step of the development task
    - Recording progress, decisions, and issues in `ROADMAP.md`
@@ -74,33 +78,35 @@ AiderBuilder automates the process of running aider in a loop with special build
 
 ## Builder Rules
 
-The `BUILDER_RULES.md` file instructs aider to:
-- Create and maintain a `ROADMAP.md` file for coordination
-- Work incrementally, one step at a time
-- Record design decisions and errors for future iterations
-- Check progress at each iteration
+The built-in builder rules (embedded in the script) instruct aider to:
+- Create and maintain a `ROADMAP.md` file for coordination between iterations
+- Work incrementally, one step at a time to avoid losing track of the big picture
+- Record design decisions, initiatives, and errors encountered in `ROADMAP.md`
+- Estimate progress at each iteration by reviewing `ROADMAP.md`
+- Use military-style communication for effective coordination
+- Split large steps into smaller substeps when needed
 - Create `FINISHED.md` when the project is complete
+
+You can optionally add custom rules using the `--extra_rules` argument to supplement the built-in rules.
 
 This approach enables complex, multi-step development tasks to be handled systematically.
 
 ## Files
 
-- `aider_builder.sh`: Main shell script (version 2.0.0)
-- `BUILDER_RULES.md`: Rules that define builder mode behavior for aider
-- `ROADMAP.md`: Created and maintained by aider during builds (tracks progress)
+- `aider_builder.sh`: Main shell script (version 3.0.0)
+- `ROADMAP.md`: Created and maintained by aider during builds (tracks progress and coordination)
 - `FINISHED.md`: Created by aider when the build is complete (signals completion)
 
 ## Error Handling
 
 The script validates:
-- Required arguments are provided
+- Required `-n_iter` argument is provided
 - `n_iter` is greater than 1
-- Rules file exists and is not empty
 - No `FINISHED.md` exists before starting (prevents conflicts with previous builds)
 
 ## Version
 
-Current version: 2.0.0
+Current version: 3.0.0
 
 ## License
 
