@@ -57,7 +57,7 @@ Usage: aider_builder.sh -n_iter N -s SPECIFICATIONS [AIDER_ARGS...]
 Run aider in a loop with builder rules.
 
 Required arguments:
-  -n_iter N                    Number of iterations per batch (must be > 1)
+  -n_iter N                    Maximum number of iterations (must be > 1). You can always rerun aider_builder.
   -s, --specifications SPEC    Specifications for what to build (passed as --message to aider)
 
 Optional arguments:
