@@ -5,14 +5,49 @@ VERSION="4.0.0"
 # Built-in builder rules
 BUILDER_RULES='If you see this text, you are expected to work in builder mode. In builder mode, you will be asked the same prompt in a loop for several iterations so some new rules apply:
 <BUILDER_RULES>
-- If there is no ROADMAP.md file at the root of the repo, you must create it.
+- At each iteration, first determine your current phase: PLANNING, EXECUTING, or REVIEWING
+- PLANNING phase: Break down tasks, identify dependencies, assess risks, structure ROADMAP.md
+- EXECUTING phase: Implement one concrete step from the TODO list
+- REVIEWING phase: Check what was done, update ROADMAP.md, assess if current approach is working
+- If there is no ROADMAP.md file at the root of the repo, you must create it with these sections:
+  * PROGRESS: Overall completion percentage and current phase
+  * OBJECTIVES: High-level goals from the user'\''s specifications
+  * COMPLETED: Checked-off tasks with completion notes
+  * IN_PROGRESS: Currently active task (should only be ONE item)
+  * TODO: Remaining tasks with priority (P0/P1/P2), dependencies, and estimated complexity
+  * BLOCKED: Tasks that cannot proceed, with reasons and attempted solutions
+  * DECISIONS: Key architectural/design decisions and rationale
+  * LESSONS_LEARNED: Errors encountered, what didn'\''t work, and why
 - ROADMAP.md is used exclusively by you, you have to write the steps needed for the project as TODO boxes, then check them as they are done. You must record your initiatives, design choices and errors you encounter into it to make it easier to coordinate across loop iterations. Military style communication is effective for this.
 - ROADMAP.md is how each iterations can coordinate, so err on the side of caution: coordination with slow progress is preferable to any iteration losing track of the big picture.
 - Do not start the actual building until you are certain ROADMAP.md is ready.
+- If you encounter a blocker or repeated errors (same issue twice), STOP executing and switch to PLANNING phase
+- Document all blockers explicitly in the BLOCKED section with: what you tried, why it failed, alternative approaches to consider
+- Never retry the same failed solution without documenting why you think it will work this time
+- Start EVERY iteration by reading ROADMAP.md and writing a brief reflection: what was accomplished last iteration, what'\''s next, any concerns or adjustments needed
+- Before executing any task, verify that it still makes sense given the current state of the project
 - Don'\''t lose track of the user'\''s request.
 - At each new loop, estimate how far along you are in the project by looking at ROADMAP.md
-- When building, never do more than one step at a time. Instead, either do one step while carefully editing ROADMAP.md, or split the next ROADMAP.md step into multiple steps and leave it to be done on the next iterations.
-- If the project and ROADMAP.md are finished, create a file "FINISHED.md" then ask the user what to do.
+- A "step" means ONE of: a single file change, OR one small feature, OR one focused refactoring
+- NEVER do more than one step per iteration - if a TODO seems large, enter PLANNING phase and break it into multiple smaller sub-tasks FIRST
+- After breaking down a task, execute only ONE sub-task, then stop
+- Better to make steps too small than too large - granular progress is safer than large jumps
+- Each step must include updating ROADMAP.md to reflect the change
+- Create FINISHED.md ONLY when ALL of these conditions are met:
+  * All TODO items are checked and moved to COMPLETED
+  * All OBJECTIVES are achieved
+  * You have done a final REVIEWING phase to verify everything works
+  * BLOCKED section is empty or all blockers are resolved/documented as acceptable limitations
+- In FINISHED.md, include: summary of what was built, key decisions made, known limitations, and suggestions for future improvements
+- After creating FINISHED.md, ask the user what to do next
+- After implementing any feature or code change, add a validation/testing step to verify it works as expected
+- Include testing tasks explicitly in the TODO section of ROADMAP.md
+- Do not mark implementation tasks as COMPLETED without at least basic manual verification or testing
+- If tests fail, document in LESSONS_LEARNED and create follow-up tasks
+- If you realize a previous decision or implementation was wrong, explicitly document this in the DECISIONS section with "CORRECTION:" prefix
+- Update ROADMAP.md to reflect the corrected approach: move incorrectly completed items back to TODO or create new corrective tasks
+- Don'\''t hesitate to mark previously "completed" items as needing rework if you discover issues
+- Learning from mistakes and adapting is more important than maintaining the appearance of linear progress
 </BUILDER_RULES>
 '
 
@@ -182,4 +217,3 @@ while true; do
             ;;
     esac
 done
-
