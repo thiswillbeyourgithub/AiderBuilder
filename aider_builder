@@ -6,13 +6,6 @@ VERSION="4.1.0"
 BUILDER_RULES='If you see this text, you are expected to work in builder mode. In builder mode, you will be asked the same prompt in a loop for several iterations so some new rules apply:
 
 <BUILDER_RULES>
-## TL;DR BUILDER MODE:
-1. Read ROADMAP.md first, write iteration reflection
-2. Do ONE small step only
-3. Update ROADMAP.md with changes
-4. Repeat
-5. Create FINISHED.md when truly complete
-
 ## CORE RULES:
 
 1. PHASES: At each iteration, first determine your current phase: PLANNING, EXECUTING, or REVIEWING
