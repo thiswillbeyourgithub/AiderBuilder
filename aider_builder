@@ -31,68 +31,58 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
    - Example: "ADDED: logging to api.py. REASON: debug user auth errors. STATUS: done, tested"
    - No fluff, no verbose explanations - clarity over completeness
 
-6. ITERATION START REFLECTION: Start EVERY iteration by reading ROADMAP.md and writing a brief reflection:
+5. ITERATION START REFLECTION: Start EVERY iteration by reading ROADMAP.md and writing a brief reflection:
    - Last completed: [what was done]
    - Next target: [what'\''s next]
    - Concerns: [any issues or NONE]
    - Phase: [PLANNING/EXECUTING/REVIEWING]
 
-7. TASK VERIFICATION: Before executing any task, verify it still makes sense given current project state.
+6. FOCUS: Before executing any task, verify it still makes sense given current project state. Don'\''t lose track of the user'\''s request - refer back to OBJECTIVES regularly.
 
-8. SCOPE MANAGEMENT: Never expand scope without explicit user request
+7. SCOPE MANAGEMENT: Never expand scope without explicit user request
    - If tempted to add features not in OBJECTIVES, document as "FUTURE_ENHANCEMENTS" in ROADMAP.md
-   - Never add features beyond specifications
-   - Simplest working solution first, optimization later
+   - Never add features beyond specifications without approval.
+   - Reliable and robust working solution first, complex optimization later
    - Focus on meeting OBJECTIVES, not on building the "best" solution
 
-9. STAY ON TRACK: Don'\''t lose track of the user'\''s request - refer back to OBJECTIVES regularly.
-
-10. PROGRESS TRACKING: At each iteration, update PROGRESS section with:
+8. PROGRESS TRACKING: At each iteration, update PROGRESS section with:
     - Completion percentage (be conservative: round down estimates)
     - Count of TODOs remaining
     - Count of active blockers
     - If progress stalls (same tasks in TODO for multiple iterations), switch to PLANNING to reassess approach
 
-11. DEPENDENCY MANAGEMENT:
-    - Mark dependencies explicitly in TODO items: "TODO: X [depends on: Y, Z]"
-    - Never start a task until ALL dependencies are in COMPLETED
-    - If multiple tasks are unblocked, choose lowest complexity first
-    - Track dependency chains to avoid circular dependencies
-
-12. STEP SIZE: Do ONE small, atomic change per iteration (e.g., edit one file, add one section, implement one small feature).
+9. STEP SIZE: Do ONE small, atomic change per iteration (e.g., edit one file, add one section, implement one small feature).
     - If a TODO seems too large, switch to PLANNING phase and break it into smaller TODOs first
     - Better too small than too large
 
-13. UPDATE ROADMAP: Each step must include updating ROADMAP.md to reflect the change.
+10. UPDATE ROADMAP: Each step must include updating ROADMAP.md to reflect the change.
 
-14. BLOCKER HANDLING: If you encounter a blocker or repeated errors (same issue twice), STOP executing and switch to PLANNING phase
+11. BLOCKER HANDLING: If you encounter a blocker or repeated errors (same issue twice), STOP executing and switch to PLANNING phase
     - Document all blockers explicitly in BLOCKED section with: what you tried, why it failed, alternative approaches to consider
     - Never retry the same failed solution without documenting why you think it will work this time
 
-15. VERIFICATION AND ERRORS: After each change, verify it works as intended. If errors occur twice on the same goal, document in BLOCKED with what failed and alternative approaches, then ask user for guidance.
-
-16. LEARNING FROM MISTAKES: If you realize a previous decision or implementation was wrong:
+12. LEARNING FROM MISTAKES: If you realize a previous decision or implementation was wrong:
     - Document in DECISIONS section with "CORRECTION:" prefix
     - Update ROADMAP.md to reflect corrected approach
     - Move incorrectly completed items back to TODO or create new corrective tasks
     - Don'\''t hesitate to mark previously "completed" items as needing rework if issues are discovered
     - Learning from mistakes and adapting is more important than maintaining appearance of linear progress
 
-17. FINISHED.md CREATION: Create FINISHED.md ONLY when ALL of these conditions are met:
+13. FINISHED.md CREATION: Create FINISHED.md ONLY when ALL of these conditions are met:
     - All TODO items are checked and moved to COMPLETED
     - Run through ALL OBJECTIVES one-by-one and verify each is achieved
     - You have done a final REVIEWING phase to verify everything works
     - BLOCKED section is empty or all blockers are resolved/documented as acceptable limitations
     - You have test results or verification evidence for each objective
 
-18. FINISHED.md CONTENT: In FINISHED.md, include:
+14. FINISHED.md CONTENT: In FINISHED.md, include:
     - Summary of what was built
     - Key decisions made (reference DECISIONS section)
     - Test results or verification evidence for each OBJECTIVE
     - Known limitations with severity ratings (CRITICAL/MINOR)
     - Suggestions for future improvements
+    After creating FINISHED.md, ask the user what to do next.
 
-19. AFTER COMPLETION: After creating FINISHED.md, ask the user what to do next.
 </BUILDER_RULES>
 '
 
