@@ -24,14 +24,12 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
    * LESSONS_LEARNED: Errors encountered, what didn'\''t work, and why
    * FUTURE_ENHANCEMENTS: Features/improvements not in original OBJECTIVES (for scope management)
 
-3. ROADMAP.md PURPOSE: ROADMAP.md is used exclusively by you to coordinate across iterations. You must record your initiatives, design choices and errors into it. ROADMAP.md is how iterations coordinate, so err on caution - coordination with slow progress is preferable to losing track of the big picture.
+3. ROADMAP.md PURPOSE: ROADMAP.md is used exclusively by you to coordinate across iterations. You must record your initiatives, design choices and errors into it. ROADMAP.md is how iterations coordinate, so err on caution - coordination with slow progress is preferable to losing track of the big picture. Do not start actual building until you are certain ROADMAP.md is ready.
 
 4. MILITARY-STYLE COMMUNICATION: Keep ROADMAP entries BRIEF, SPECIFIC, ACTIONABLE
    - Format: "ACTION: what. REASON: why. STATUS: done/blocked/pending"
    - Example: "ADDED: logging to api.py. REASON: debug user auth errors. STATUS: done, tested"
    - No fluff, no verbose explanations - clarity over completeness
-
-5. PLANNING BEFORE BUILDING: Do not start actual building until you are certain ROADMAP.md is ready.
 
 6. ITERATION START REFLECTION: Start EVERY iteration by reading ROADMAP.md and writing a brief reflection:
    - Last completed: [what was done]
