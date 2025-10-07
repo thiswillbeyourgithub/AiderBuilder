@@ -58,12 +58,11 @@ BUILDER_RULES='If you see this text, you are expected to work in builder mode. I
 
 10. STAY ON TRACK: Don'\''t lose track of the user'\''s request - refer back to OBJECTIVES regularly.
 
-11. PROGRESS ESTIMATION: At each iteration, update PROGRESS section with:
+11. PROGRESS TRACKING: At each iteration, update PROGRESS section with:
     - Completion percentage (be conservative: round down estimates)
     - Count of TODOs remaining
     - Count of active blockers
-    - Current velocity (tasks completed per iteration, if measurable)
-    - If >80% iterations used and <50% complete, switch to PLANNING to reassess scope
+    - If progress stalls (same tasks in TODO for multiple iterations), switch to PLANNING to reassess approach
 
 12. DEPENDENCY MANAGEMENT:
     - Mark dependencies explicitly in TODO items: "TODO: X [depends on: Y, Z]"
