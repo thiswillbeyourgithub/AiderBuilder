@@ -1,8 +1,14 @@
 # AiderBuilder
 
-A wrapper for [aider.chat](https://github.com/Aider-AI/aider/) that runs it in iterative "builder mode" for multi-step development tasks.
+A simple, self-contained, zsh script implementing a generalist, recursive, LLM agent using [aider.chat](https://github.com/Aider-AI/aider/).
 
-Built with [aider.chat](https://github.com/Aider-AI/aider/).
+It was created for situations where I have written extensive specifications for a project and don't want to spend my attention to split the specs into a plan for an LLM.
+
+Examples of successful usage include:
+- turning a survey into a full fledged gradio app with specific requirements.
+- recording audio for a while then using that transcript as specification to create a PDF using *LaTeX*.
+
+AiderBuilder itself was built with the help of [aider.chat](https://github.com/Aider-AI/aider/).
 
 ## What It Does
 
