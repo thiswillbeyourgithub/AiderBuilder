@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-VERSION="4.1.0"
+VERSION="4.2.0"
 
 # Built-in builder rules
 BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. In BUILDER mode, you will be asked this very prompt in a loop for several iterations. This will allow you to tackle complex tasks.
