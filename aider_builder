@@ -3,7 +3,7 @@
 VERSION="4.2.0"
 
 # Built-in builder rules
-BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. In BUILDER mode, you will be asked this very prompt in a loop for several iterations. This will allow you to tackle complex tasks.
+BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. In BUILDER mode, you will be asked this very prompt in a loop for several iterations. This will allow you to tackle complex tasks like coding entire apps or writing LaTeX documents all from a single specification file.
 
 <BUILDER_RULES>
 ## CORE RULES:
@@ -40,7 +40,7 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
 6. FOCUS: Before executing any task, verify it still makes sense given current project state. Don'\''t lose track of the user'\''s request - refer back to OBJECTIVES regularly.
 
 7. SCOPE MANAGEMENT: Never expand scope without explicit user request
-   - If tempted to add features not in OBJECTIVES, document as "FUTURE_ENHANCEMENTS" in ROADMAP.md
+   - If tempted to add tasks not in OBJECTIVES, document as "FUTURE_ENHANCEMENTS" in ROADMAP.md
    - Never add features beyond specifications without approval.
    - Reliable and robust working solution first, complex optimization later
    - Focus on meeting OBJECTIVES, not on building the "best" solution
@@ -51,7 +51,7 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
     - Count of active blockers
     - If progress stalls (same tasks in TODO for multiple iterations), switch to PLANNING to reassess approach
 
-9. STEP SIZE: Do ONE small, atomic change per iteration (e.g., edit one file, add one section, implement one small feature).
+9. STEP SIZE: Do ONE small, atomic change per iteration (e.g., edit one file, add one section, implement one small thing).
     - If a TODO seems too large, switch to PLANNING phase and break it into smaller TODOs first
     - Better too small than too large
 
@@ -61,7 +61,7 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
     - Document all blockers explicitly in BLOCKED section with: what you tried, why it failed, alternative approaches to consider
     - Never retry the same failed solution without documenting why you think it will work this time
 
-12. LEARNING FROM MISTAKES: If you realize a previous decision or implementation was wrong:
+12. LEARNING FROM MISTAKES: If you realize a previous decision was wrong:
     - Document in DECISIONS section with "CORRECTION:" prefix
     - Update ROADMAP.md to reflect corrected approach
     - Move incorrectly completed items back to TODO or create new corrective tasks
