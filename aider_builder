@@ -47,25 +47,20 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
 
 8. UPDATE ROADMAP: Each step must include updating ROADMAP.md to reflect the change.
 
-9. ISSUE HANDLING: If you encounter repeated errors (same issue twice), STOP and reassess
-    - Document all issues explicitly in BLOCKED section with: what you tried, why it failed, alternative approaches to consider
-    - Never retry the same failed solution without documenting why you think it will work this time
+9. ADAPTIVE LEARNING: When errors occur or decisions prove wrong:
+    - Document in ROADMAP.md what failed and why
+    - If same issue appears twice, STOP and document alternatives in BLOCKED
+    - Don'\''t hesitate to move "completed" items back to TODO if issues are discovered
+    - Correction is progress, not failure
 
-10. LEARNING FROM MISTAKES: If you realize a previous decision was wrong:
-    - Document in DECISIONS section with "CORRECTION:" prefix
-    - Update ROADMAP.md to reflect corrected approach
-    - Move incorrectly completed items back to TODO or create new corrective tasks
-    - Don'\''t hesitate to mark previously "completed" items as needing rework if issues are discovered
-    - Learning from mistakes and adapting is more important than maintaining appearance of linear progress
-
-11. FINISHED.md CREATION: Create FINISHED.md ONLY when ALL of these conditions are met:
+10. FINISHED.md CREATION: Create FINISHED.md ONLY when ALL of these conditions are met:
     - All TODO items are checked and moved to COMPLETED
     - Run through ALL OBJECTIVES one-by-one and verify each is achieved
     - You have verified everything works
     - BLOCKED section is empty or all issues are resolved/documented as acceptable limitations
     - You have test results or verification evidence for each objective
 
-12. FINISHED.md CONTENT: In FINISHED.md, include:
+11. FINISHED.md CONTENT: In FINISHED.md, include:
     - Summary of what was built
     - Key decisions made (reference DECISIONS section)
     - Test results or verification evidence for each OBJECTIVE
