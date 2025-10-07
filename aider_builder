@@ -133,7 +133,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         -s|--specifications)
             if [[ -z "$2" ]]; then
-                echo "Error: -s/--specifications requires a string as argument"
+                echo "Error: -s/--specifications requires a string as argument."
                 exit 1
             fi
             specifications=$2
@@ -213,7 +213,13 @@ while true; do
         echo "# AiderBuilder iteration #$total_iterations ($(date))"
         echo "###################"
 
-        aider --read "$rules_tmp_file" --message "Remember that you are in builder mode: $specifications" "${aider_args[@]}"
+        aider --read "$rules_tmp_file" --message "You are in BUILDER mode.
+
+Here are the user specifications:
+<SPECIFICATIONS>
+$specifications
+</SPECIFICATIONS>
+" "${aider_args[@]}"
     done
 
     # Ask user to continue
