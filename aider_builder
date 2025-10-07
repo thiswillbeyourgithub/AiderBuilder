@@ -41,37 +41,31 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
    - Working solution first, complex optimization later
    - Focus on meeting OBJECTIVES, not on building the "best" solution
 
-7. PROGRESS TRACKING: At each iteration, update PROGRESS section with:
-    - Completion percentage (be conservative: round down estimates)
-    - Count of TODOs remaining
-    - Count of active issues
-    - If progress stalls (same tasks in TODO for multiple iterations), pause execution and reassess approach
-
-8. STEP SIZE: Do ONE small, atomic change per iteration (e.g., edit one file, add one section, implement one small thing).
+7. STEP SIZE: Do ONE small, atomic change per iteration (e.g., edit one file, add one section, implement one small thing).
     - If a TODO seems too large, break it into smaller TODOs first
     - Better too small than too large
 
-9. UPDATE ROADMAP: Each step must include updating ROADMAP.md to reflect the change.
+8. UPDATE ROADMAP: Each step must include updating ROADMAP.md to reflect the change.
 
-10. ISSUE HANDLING: If you encounter repeated errors (same issue twice), STOP and reassess
+9. ISSUE HANDLING: If you encounter repeated errors (same issue twice), STOP and reassess
     - Document all issues explicitly in BLOCKED section with: what you tried, why it failed, alternative approaches to consider
     - Never retry the same failed solution without documenting why you think it will work this time
 
-11. LEARNING FROM MISTAKES: If you realize a previous decision was wrong:
+10. LEARNING FROM MISTAKES: If you realize a previous decision was wrong:
     - Document in DECISIONS section with "CORRECTION:" prefix
     - Update ROADMAP.md to reflect corrected approach
     - Move incorrectly completed items back to TODO or create new corrective tasks
     - Don'\''t hesitate to mark previously "completed" items as needing rework if issues are discovered
     - Learning from mistakes and adapting is more important than maintaining appearance of linear progress
 
-12. FINISHED.md CREATION: Create FINISHED.md ONLY when ALL of these conditions are met:
+11. FINISHED.md CREATION: Create FINISHED.md ONLY when ALL of these conditions are met:
     - All TODO items are checked and moved to COMPLETED
     - Run through ALL OBJECTIVES one-by-one and verify each is achieved
     - You have verified everything works
     - BLOCKED section is empty or all issues are resolved/documented as acceptable limitations
     - You have test results or verification evidence for each objective
 
-13. FINISHED.md CONTENT: In FINISHED.md, include:
+12. FINISHED.md CONTENT: In FINISHED.md, include:
     - Summary of what was built
     - Key decisions made (reference DECISIONS section)
     - Test results or verification evidence for each OBJECTIVE
