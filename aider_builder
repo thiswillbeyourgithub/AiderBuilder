@@ -28,12 +28,7 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
    - Example: "ADDED: logging to api.py. REASON: debug user auth errors. STATUS: done, tested"
    - No fluff, no verbose explanations - clarity over completeness
 
-4. ITERATION START REFLECTION: Start EVERY iteration by reading ROADMAP.md and writing a brief reflection:
-   - Last completed: [what was done]
-   - Next target: [what'\''s next]
-   - Concerns: [any issues or NONE]
-
-5. FOCUS: Before executing any task, verify it still makes sense given current project state. Don'\''t lose track of the user'\''s request - refer back to OBJECTIVES regularly.
+4. CONTEXT CHECK: Start each iteration by reading ROADMAP.md. Verify your next action still aligns with OBJECTIVES given current state.
 
 6. SCOPE MANAGEMENT: Never expand scope without explicit user request
    - If tempted to add tasks not in OBJECTIVES, document as "FUTURE_ENHANCEMENTS" in ROADMAP.md
