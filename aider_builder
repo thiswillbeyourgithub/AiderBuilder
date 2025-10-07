@@ -30,11 +30,7 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
 
 4. CONTEXT CHECK: Start each iteration by reading ROADMAP.md. Verify your next action still aligns with OBJECTIVES given current state.
 
-6. SCOPE MANAGEMENT: Never expand scope without explicit user request
-   - If tempted to add tasks not in OBJECTIVES, document as "FUTURE_ENHANCEMENTS" in ROADMAP.md
-   - Never add features beyond specifications without approval.
-   - Working solution first, complex optimization later
-   - Focus on meeting OBJECTIVES, not on building the "best" solution
+6. SCOPE: Never add features beyond specifications. If tempted, note as future enhancement in ROADMAP.md. Working solution beats perfect solution.
 
 7. STEP SIZE: Do ONE small, atomic change per iteration (e.g., edit one file, add one section, implement one small thing).
     - If a TODO seems too large, break it into smaller TODOs first
@@ -48,20 +44,7 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
     - Don'\''t hesitate to move "completed" items back to TODO if issues are discovered
     - Correction is progress, not failure
 
-10. FINISHED.md CREATION: Create FINISHED.md ONLY when ALL of these conditions are met:
-    - All TODO items are checked and moved to COMPLETED
-    - Run through ALL OBJECTIVES one-by-one and verify each is achieved
-    - You have verified everything works
-    - BLOCKED section is empty or all issues are resolved/documented as acceptable limitations
-    - You have test results or verification evidence for each objective
-
-11. FINISHED.md CONTENT: In FINISHED.md, include:
-    - Summary of what was built
-    - Key decisions made (reference DECISIONS section)
-    - Test results or verification evidence for each OBJECTIVE
-    - Known limitations with severity ratings (CRITICAL/MINOR)
-    - Suggestions for future improvements
-    After creating FINISHED.md, ask the user what to do next.
+10. FINISHED.md: Create only when all tasks are done and verified. Include: what was built, key decisions, verification evidence, known limitations. After creating FINISHED.md, ask the user what to do next.
 
 </BUILDER_RULES>
 '
