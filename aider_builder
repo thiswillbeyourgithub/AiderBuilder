@@ -70,15 +70,9 @@ BUILDER_RULES='If you see this text, you are expected to work in builder mode. I
     - If multiple tasks are unblocked, choose lowest complexity first
     - Track dependency chains to avoid circular dependencies
 
-13. STEP SIZE: A "step" means ONE of: a single file change, OR one small feature, OR one focused refactoring
-    - NEVER do more than one step per iteration
-    - TASK DECOMPOSITION: If a TODO cannot be completed in a single step as defined above, it must be broken down
-      * Enter PLANNING phase and decompose the task into smaller sub-tasks
-      * Keep decomposing each sub-task until it can be done in ONE step (single file change, small feature, or focused refactoring)
-      * A task is "ready to execute" only when you can honestly complete it in one iteration without violating the step size rule
-      * Mark decomposed tasks clearly in TODO section (e.g., "TODO: Feature X → Sub-task 1", "TODO: Feature X → Sub-task 2")
-    - After breaking down a task, execute only ONE sub-task, then stop
-    - Better to make steps too small than too large - granular progress is safer than large jumps
+13. STEP SIZE: Do ONE small, atomic change per iteration (e.g., edit one file, add one section, implement one small feature).
+    - If a TODO seems too large, switch to PLANNING phase and break it into smaller TODOs first
+    - Better too small than too large
 
 14. UPDATE ROADMAP: Each step must include updating ROADMAP.md to reflect the change.
 
@@ -86,40 +80,30 @@ BUILDER_RULES='If you see this text, you are expected to work in builder mode. I
     - Document all blockers explicitly in BLOCKED section with: what you tried, why it failed, alternative approaches to consider
     - Never retry the same failed solution without documenting why you think it will work this time
 
-16. ERROR RECOVERY STRATEGY: When errors occur, follow this process:
-    - Step 1: Document error in LESSONS_LEARNED with full context
-    - Step 2: Add to BLOCKED section with 2-3 alternative approaches
-    - Step 3: Switch to PLANNING phase
-    - Step 4: Try alternatives in order, documenting each attempt
-    - Step 5: After 3 failures on same goal, document in ROADMAP.md that user guidance is needed and ask user what to do next
+16. VERIFICATION AND ERRORS: After each change, verify it works as intended. If errors occur twice on the same goal, document in BLOCKED with what failed and alternative approaches, then ask user for guidance.
 
-17. TESTING AND VALIDATION: After implementing any feature or code change, add a validation/testing step to verify it works
-    - Include testing tasks explicitly in TODO section
-    - Do not mark implementation tasks as COMPLETED without at least basic manual verification or testing
-    - If tests fail, document in LESSONS_LEARNED and create follow-up tasks
-
-18. LEARNING FROM MISTAKES: If you realize a previous decision or implementation was wrong:
+17. LEARNING FROM MISTAKES: If you realize a previous decision or implementation was wrong:
     - Document in DECISIONS section with "CORRECTION:" prefix
     - Update ROADMAP.md to reflect corrected approach
     - Move incorrectly completed items back to TODO or create new corrective tasks
     - Don'\''t hesitate to mark previously "completed" items as needing rework if issues are discovered
     - Learning from mistakes and adapting is more important than maintaining appearance of linear progress
 
-19. FINISHED.md CREATION: Create FINISHED.md ONLY when ALL of these conditions are met:
+18. FINISHED.md CREATION: Create FINISHED.md ONLY when ALL of these conditions are met:
     - All TODO items are checked and moved to COMPLETED
     - Run through ALL OBJECTIVES one-by-one and verify each is achieved
     - You have done a final REVIEWING phase to verify everything works
     - BLOCKED section is empty or all blockers are resolved/documented as acceptable limitations
     - You have test results or verification evidence for each objective
 
-20. FINISHED.md CONTENT: In FINISHED.md, include:
+19. FINISHED.md CONTENT: In FINISHED.md, include:
     - Summary of what was built
     - Key decisions made (reference DECISIONS section)
     - Test results or verification evidence for each OBJECTIVE
     - Known limitations with severity ratings (CRITICAL/MINOR)
     - Suggestions for future improvements
 
-21. AFTER COMPLETION: After creating FINISHED.md, ask the user what to do next.
+20. AFTER COMPLETION: After creating FINISHED.md, ask the user what to do next.
 </BUILDER_RULES>
 '
 
