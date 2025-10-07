@@ -38,7 +38,6 @@ chmod +x aider_builder
 
 ### Optional Arguments
 
-- `--extra_rules RULES`: Additional builder rules
 - `-h, --help`: Show help
 - `-v, --version`: Show version
 - `AIDER_ARGS...`: Additional aider arguments (don't use `--message`, use `-s` instead)
@@ -51,9 +50,6 @@ chmod +x aider_builder
 
 # With architect mode
 ./aider_builder -n_iter 10 -s "Build a REST API with FastAPI" --architect
-
-# With custom rules
-./aider_builder -n_iter 5 -s "Refactor the codebase" --extra_rules "Focus on performance"
 ```
 
 ## How It Works
@@ -75,5 +71,3 @@ Aider is instructed to:
 - Record design decisions and errors
 - Estimate progress at each iteration
 - Create `FINISHED.md` when done
-
-Add custom rules with `--extra_rules` to supplement these.

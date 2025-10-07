@@ -89,7 +89,7 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
 # Function to show usage
 show_help() {
     cat << EOF
-Usage: aider_builder.sh -n_iter N -s SPECIFICATIONS [--extra_rules RULES_STRING] [AIDER_ARGS...]
+Usage: aider_builder.sh -n_iter N -s SPECIFICATIONS [AIDER_ARGS...]
 
 Run aider in a loop with builder rules.
 
@@ -98,7 +98,6 @@ Required arguments:
   -s, --specifications SPEC    Specifications for what to build (passed as --message to aider)
 
 Optional arguments:
-  --extra_rules RULES      Additional rules to append to built-in builder rules
   -h, --help              Show this help message and exit
   -v, --version           Show version and exit
   
@@ -113,7 +112,6 @@ EOF
 # Parse arguments
 n_iter=""
 specifications=""
-extra_rules=""
 aider_args=()
 
 while [[ $# -gt 0 ]]; do
@@ -139,14 +137,6 @@ while [[ $# -gt 0 ]]; do
                 exit 1
             fi
             specifications=$2
-            shift 2
-            ;;
-        --extra_rules)
-            if [[ -z "$2" ]]; then
-                echo "Error: --extra_rules requires a string as argument"
-                exit 1
-            fi
-            extra_rules=$2
             shift 2
             ;;
         *)
@@ -188,21 +178,10 @@ if [[ $n_iter -le 1 ]]; then
     exit 1
 fi
 
-# Combine builder rules with extra rules if provided
-combined_rules="$BUILDER_RULES"
-if [[ -n "$extra_rules" ]]; then
-    combined_rules="$combined_rules
-
-<EXTRA_BUILDER_RULES>
-$extra_rules
-</EXTRA_BUILDER_RULES>
-"
-fi
-
 # Create temporary file for rules
 rules_tmp_file=$(mktemp)
 trap "rm -f $rules_tmp_file" EXIT
-echo "$combined_rules" > "$rules_tmp_file"
+echo "$BUILDER_RULES" > "$rules_tmp_file"
 
 # Check if FINISHED.md already exists before starting
 if [[ -f "FINISHED.md" ]]; then
