@@ -58,7 +58,8 @@ Run aider in a loop with builder rules.
 
 Required arguments:
   -n_iter N                    Maximum number of iterations (must be > 1). You can always rerun aider_builder.
-  -s, --specifications SPEC    Specifications for what to build (passed as --message to aider)
+  -s, --specifications SPEC    Specifications for what to build (passed as --message to aider). Can be a direct
+                               string or a path to a file containing the specifications.
 
 Optional arguments:
   -h, --help              Show this help message and exit
@@ -139,6 +140,13 @@ done
 if [[ $n_iter -le 1 ]]; then
     echo "Error: -n_iter must be greater than 1"
     exit 1
+fi
+
+# Check if specifications is a path to a non-empty file
+# If so, read its contents as the specification
+if [[ -f "$specifications" ]] && [[ -s "$specifications" ]]; then
+    echo "Reading specifications from file: $specifications"
+    specifications=$(<"$specifications")
 fi
 
 # Create temporary file for rules
