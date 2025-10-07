@@ -3,7 +3,7 @@
 VERSION="4.1.0"
 
 # Built-in builder rules
-BUILDER_RULES='If you see this text, you are expected to work in builder mode. In builder mode, you will be asked the same prompt in a loop for several iterations so some new rules apply:
+BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. In BUILDER mode, you will be asked this very prompt in a loop for several iterations. This will allow you to tackle complex tasks.
 
 <BUILDER_RULES>
 ## CORE RULES:
@@ -20,7 +20,7 @@ BUILDER_RULES='If you see this text, you are expected to work in builder mode. I
    * IN_PROGRESS: Currently active task (should only be ONE item)
    * TODO: Remaining tasks with priority (P0/P1/P2), dependencies (format: [depends on: X, Y]), and estimated complexity
    * BLOCKED: Tasks that cannot proceed, with reasons and attempted solutions
-   * DECISIONS: Key architectural/design decisions and rationale
+   * DECISIONS: Key architectural/design decisions you took and rationale
    * LESSONS_LEARNED: Errors encountered, what didn'\''t work, and why
    * FUTURE_ENHANCEMENTS: Features/improvements not in original OBJECTIVES (for scope management)
 
