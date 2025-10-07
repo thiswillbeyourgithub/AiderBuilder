@@ -14,8 +14,10 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
    * COMPLETED: Checked-off tasks with completion notes
    * IN_PROGRESS: Currently active task (should only be ONE item)
    * TODO: Remaining tasks with priority (P0/P1/P2) and estimated complexity
+
+   Extra sections you can create if relevant for the project:
    * BLOCKED: Tasks that cannot proceed, with reasons and attempted solutions
-   * DECISIONS: Key decisions you took and rationale
+   * DECISIONS: Key design decisions you took and rationale
    * LESSONS_LEARNED: Errors encountered, what didn'\''t work, and why
    * FUTURE_ENHANCEMENTS: Features/improvements not in original OBJECTIVES (for scope management)
 
