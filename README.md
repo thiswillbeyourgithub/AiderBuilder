@@ -34,7 +34,7 @@ chmod +x aider_builder
 ### Required Arguments
 
 - `-n_iter N`: Iterations per batch (must be > 1)
-- `-s, --specifications SPEC`: What to build (passed as prompt to aider)
+- `-s, --specifications SPEC`: What to build (passed as prompt to aider). Can be a direct string or a path to a file containing the specifications.
 
 ### Optional Arguments
 
@@ -45,8 +45,11 @@ chmod +x aider_builder
 ### Examples
 
 ```bash
-# Build a CLI tool
+# Build a CLI tool with inline specification
 ./aider_builder -n_iter 5 -s "Create a Python CLI calculator using click"
+
+# Build from a specification file
+./aider_builder -n_iter 10 -s specs.txt
 
 # With architect mode
 ./aider_builder -n_iter 10 -s "Build a REST API with FastAPI" --architect
