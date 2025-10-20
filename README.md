@@ -58,13 +58,15 @@ chmod +x aider_builder
 ## How It Works
 
 1. Checks no `FINISHED.md` exists from previous builds
-2. Loads builder rules into aider
-3. Runs `n_iter` iterations where aider:
+2. Creates `ROADMAP.md` if it doesn't exist (via `touch`)
+3. Loads builder rules into aider
+4. Runs `n_iter` iterations where aider:
+   - Always has `ROADMAP.md` in the chat context (via `--file` flag)
    - Creates/updates `ROADMAP.md` to track progress
    - Performs one development step at a time
    - Records decisions and issues in `ROADMAP.md`
-4. Prompts to continue after each batch
-5. Stops when aider creates `FINISHED.md`
+5. Prompts to continue after each batch
+6. Stops when aider creates `FINISHED.md`
 
 ## Builder Rules
 
