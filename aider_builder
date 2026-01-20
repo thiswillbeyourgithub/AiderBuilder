@@ -161,27 +161,6 @@ if [[ -f "$specifications" ]] && [[ -s "$specifications" ]]; then
     specifications=$(<"$specifications")
 fi
 
-# Expand include patterns and add to aider_args
-if [[ ${#include_patterns[@]} -gt 0 ]]; then
-    echo "Expanding include patterns..."
-    for pattern in "${include_patterns[@]}"; do
-        # Enable extended globbing for ** patterns
-        setopt extended_glob
-        matched_files=(${~pattern})
-        if [[ ${#matched_files[@]} -eq 0 ]]; then
-            echo "Warning: Pattern '$pattern' matched no files"
-        else
-            echo "Pattern '$pattern' matched ${#matched_files[@]} file(s)"
-            for file in "${matched_files[@]}"; do
-                # Only add if it's a regular file (not directory)
-                if [[ -f "$file" ]]; then
-                    aider_args+=(--file "$file")
-                fi
-            done
-        fi
-    done
-fi
-
 # Create temporary file for rules
 rules_tmp_file=$(mktemp)
 trap "rm -f $rules_tmp_file" EXIT
@@ -219,6 +198,27 @@ while true; do
         echo "\n###################"
         echo "# AiderBuilder iteration #$total_iterations ($(date))"
         echo "###################"
+
+        # Expand include patterns and add to aider_args
+        if [[ ${#include_patterns[@]} -gt 0 ]]; then
+            echo "Expanding include patterns..."
+            for pattern in "${include_patterns[@]}"; do
+                # Enable extended globbing for ** patterns
+                setopt extended_glob
+                matched_files=(${~pattern})
+                if [[ ${#matched_files[@]} -eq 0 ]]; then
+                    echo "Warning: Pattern '$pattern' matched no files"
+                else
+                    echo "Pattern '$pattern' matched ${#matched_files[@]} file(s)"
+                    for file in "${matched_files[@]}"; do
+                        # Only add if it's a regular file (not directory)
+                        if [[ -f "$file" ]]; then
+                            aider_args+=(--file "$file")
+                        fi
+                    done
+                fi
+            done
+        fi
 
         aider --read "$rules_tmp_file" --file ROADMAP.md --message "You are in BUILDER mode.
 
