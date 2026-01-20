@@ -30,7 +30,7 @@ BUILDER_RULES='If you see this text, you are expected to work in BUILDER mode. I
 
 4. CONTEXT CHECK: Start each iteration by reading ROADMAP.md. Verify your next action still aligns with OBJECTIVES given current state.
 
-6. SCOPE: Never add features beyond specifications. If tempted, note as future enhancement in ROADMAP.md. Working solution beats perfect solution.
+6. SCOPE: Never add features beyond specifications. In BUILDER mode you only build but you do not try to test the code.  If tempted, note as future enhancement in ROADMAP.md. Working solution beats perfect solution.
 
 7. STEP SIZE: Do ONE small, atomic change per iteration (e.g., edit one file, add one section, implement one small thing).
     - If a TODO seems too large, break it into smaller TODOs first
